@@ -2,6 +2,7 @@ package com.tekSystems.DeleteDuplicates.util;
 
 import java.util.Arrays;
 import java.util.HashSet;
+import java.util.LinkedHashSet;
 import java.util.Set;
 import java.util.TreeSet;
 
@@ -13,7 +14,7 @@ import org.apache.commons.lang.ArrayUtils;
  * below ways 
  * 
  * 		1. Iterate thru the int random array and add to set 
- * 		2. Iterate thru the int random array and add to Treeset to maintain the order 
+ * 		2. Iterate thru the int random array and add to LinkedHashset to maintain the order 
  * 		3. Converting int array to set by using apache lang
  * 		4. With JDK 8 Stream
  * 
@@ -36,7 +37,7 @@ public class DeDup {
 		/**
 		 * Method 2: Removing the duplicates in random int array with TreeSet to maintain the order
 		 */
-		System.out.println("removeDuplicatesWithTreeSet -->" + removeDuplicatesWithTreeSet(randomIntegers));
+		System.out.println("removeDuplicatesWithLinkedHashSet -->" + removeDuplicatesWithLinkedHashSet(randomIntegers));
 		
 		/**
 		 * Method 3: Removing the duplicates in random int array with Apache lang
@@ -77,18 +78,18 @@ public class DeDup {
 	 * @param randomIntegers
 	 * @return distinct int Treeset
 	 */
-	private static Set<Integer> removeDuplicatesWithTreeSet(int[] randomIntegers){
-		Set<Integer> randomIntTreeSet =  new TreeSet<Integer>();
+	private static Set<Integer> removeDuplicatesWithLinkedHashSet(int[] randomIntegers){
+		Set<Integer> randomIntOrderedSet =  new LinkedHashSet<Integer>();
 		
 		if(null!=randomIntegers){
 			for (int randomNum: randomIntegers){
-				randomIntTreeSet.add(randomNum);
+				randomIntOrderedSet.add(randomNum);
 			}
 		}else{
 			System.out.println("Input Array is null or empty, please check....");
 		}
 		
-		return randomIntTreeSet;
+		return randomIntOrderedSet;
 	}
 	
 	
